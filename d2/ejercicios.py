@@ -125,9 +125,31 @@ numero_adivinar = 10
 # 13 => 'el numero es menor que ese'
 # 10 => 'felicidades adivinaste el numero'
 
+# solución
+# numero_input = None
+
+# while numero_input != numero_adivinar:
+#     numero_input = int(input('Ingrese un número: '))
+#     if numero_input > numero_adivinar:
+#         print("El número es menor que {}".format(numero_input))
+#     elif numero_input < numero_adivinar:
+#         print("El número es mayor que {}".format(numero_input))
+
+# print('Acertaste!')
 
 # EJERCICIO 8
 # dado los siguientes numeros:
 numeros = [1, 2, 5, 9, 12, 15, 17, 19, 21, 39, 45]
 # indicar cuantos de ellos son multiplos de 3 y de 5 , ademas si hay un multiplo de 3 y de 5 no contabilizarlos
 # multiplos de 3: 3 , multiplos de 5: 1
+
+# solución
+multiplos_3 = 0
+multiplos_5 = 0
+
+for item in numeros:
+    if item % 3 == 0 and item % 5 != 0:
+        multiplos_3 += 1
+    if item % 5 == 0 and item % 3 != 0:
+        multiplos_5 += 1
+print(multiplos_3, multiplos_5)

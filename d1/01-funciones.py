@@ -1,6 +1,9 @@
 # función
 # bloque de código que no se ejecuta automáticamente
 
+from asyncio.base_subprocess import ReadSubprocessPipeProto
+
+
 def saludar():
     print('Buenas tardes')
 
@@ -124,3 +127,14 @@ def recibirAlumnos(clase, *alumnos):
 recibirAlumnos('Eduardo', 'Juan Carlos', 'Manuel')
 # devuelve una tupla ('Eduardo', 'Juan Carlos', 'Manuel', 'Wilson', 'Alejandro')
 recibirAlumnos('Eduardo', 'Juan Carlos', 'Manuel', 'Wilson', 'Alejandro')
+
+
+# x = (param1, param2) => {...}
+# Función Anónima (lambda function)
+# sólo se puede escribir en una línea de código.
+# sumatoria = lambda numero1, numero2: numero1 + numero2
+def sumatoria(numero1, numero2): return numero1 + numero2
+
+
+respuesta = sumatoria(10, 5)
+print(respuesta)

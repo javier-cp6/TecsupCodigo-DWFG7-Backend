@@ -11,6 +11,7 @@ class Vehiculo:
         # atributo privado inicia con __
         self.__serie = marca+modelo
         # TODO: explicar el tipo PROTECTED
+        # A diferencia de otros lenguajes, en Python es posible acceder a un atributo protegido y al momento de hacer herencia no modifica los valores (al crear el mismo atributo en las clases hijas)
         self._serie2 = marca+modelo
 
     # método para acceder a atributo privado

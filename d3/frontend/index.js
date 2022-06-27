@@ -31,15 +31,55 @@ fetch(RUTA_BACK + '/producto', {
     console.log(error)
   })
 
-// TODO : hacer un button que cuando se haga click se mande a llamar el endpoint para devolver-productos
+// TODO : agregar un button que al hacer click llame el endpoint para devolver-productos
 
-  fetch(RUTA_BACK + '/devolver-productos', { 
+// service
+const getProducts = () => {
+  return fetch(RUTA_BACK + '/devolver-productos', { 
     method: 'GET'}).then((respuesta) => {
     return respuesta.json()
   })
   .then((data) => {
     console.log(data)
+    return data.content
   })
   .catch((error) => {
     console.log(error)
   })
+}
+
+// interface
+const drawProducts = (products) => {
+  const productTable = document.getElementById('productTable')
+
+  let htmlProducts = ''
+  
+  products.forEach(({nombre, precio}) => {
+    let product = `
+        <tr>
+          <td>${nombre}</td>
+          <td>${precio}</td>
+        </tr>
+    `
+    htmlProducts += product
+  });
+  productTable.innerHTML = htmlProducts
+}
+
+// btn event
+const btnGetProducts = document.getElementById('btnGetProducts')
+
+btnGetProducts.addEventListener('click', async() => {
+  try {
+    const productsData = await getProducts()
+    console.log(productsData)
+    drawProducts(productsData)
+  } catch (error) {
+    throw error
+  }
+})   
+
+
+
+
+  

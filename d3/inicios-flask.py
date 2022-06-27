@@ -2,7 +2,7 @@ from flask import Flask, request
 from datetime import datetime
 from flask_cors import CORS
 
-# print(request) # aquí no se puede usar request
+# print(request) # aquí no se puede usar request, sino dentro de un decorador
 
 # __name__ variable propia de python que muestra si el archivo que estamos utulizando es el principal del proyecto. Si es el principal, su valor era '__main__', caso contratio indicará otro valor
 app = Flask(__name__)
@@ -24,16 +24,16 @@ productos = []
 
 @app.route('/')
 def rutaInicial():
-    print('ingreso al endpoint inicial')
-    return 'Bienvenido a tu primera API Tecsup 10'
+    print('acceso al endpoint inicial')
+    return 'Bienvenido a tu primera API Tecsup!'
 
 
 @app.route('/estado')
 def estadoAPI():
     # return un diccionario
     return {
-        # python viene con algunas librerías (p. ej. datetime)
-        # 'hora': datetime.now()
+        # python viene con algunas librerías (p. ej. datetime), por lo cual pueden importarse sin instalación previa.
+        # 'hora': datetime.now() # "hora": "Mon, 27 Jun 2022 10:44:56 GMT"
         'hora': datetime.now().strftime('%Y-%m-%d %H:%M%S')
     }
 

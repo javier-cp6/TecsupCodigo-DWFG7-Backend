@@ -3,7 +3,7 @@ class Usuario:
         self.nombre = nombre
         self.apellido = apellido
 
-    # Polimorfismo es la definición del mismo método en difrentes clases pero con un comportamiento distinto
+    # Polimorfismo es la definición del mismo método en diferentes clases pero con un comportamiento distinto
 
     # info no es palabra reservada. En este caso se declara que info devuelva un objeto
 
@@ -26,8 +26,8 @@ class Alumno(Usuario):
     def info(self):
         # return {
         #     'nombre': self.nombre,
-        #     'anio': self.anio,
         #     'apellido': self.apellido,
+        #     'anio': self.anio,
         #     'seccion': self.seccion
         # }
 

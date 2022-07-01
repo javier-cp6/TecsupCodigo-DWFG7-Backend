@@ -62,6 +62,12 @@ SELECT * FROM productos WHERE NOMBRE LIKE '___a%';
 -- UPDATE
 UPDATE productos SET nombre = 'Cebolla china' WHERE nombre = 'ceBollA'; 
 -- Devuelve error porque MySQl se encuentra por defecto en modo seguro, el cual impide actualizar columnas si es que no se tiene en la condición a una columna UNIQUE o que sea una KEY
--- Desactivar modo seguro (no recomendado, dado que podrían ejecutarse modificaciones o eliminaciones masivas que no pueden deshacerse)
+-- Desactivar (=false) modo seguro (no recomendado, dado que podrían ejecutarse modificaciones o eliminaciones masivas que no pueden deshacerse)
+SET SQL_SAFE_UPDATES = false; -- regresarlo a true luego de ejecutarlo
+
+-- DELETE
+-- permite remover registros
 SET SQL_SAFE_UPDATES = false;
+DELETE FROM productos WHERE nombre = 'Aguaymanto';
+SELECT * FROM productos
 

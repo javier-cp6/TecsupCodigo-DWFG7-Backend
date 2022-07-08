@@ -1,8 +1,11 @@
 // import './App.css';
+import { useState } from 'react';
+
 import './styles.css'
 import event_img from './img/event_img.png'
 
 function App() {
+  const [ inputs, setInputs] = useState({}) 
   return (
     <main>
       <section class="section-container">

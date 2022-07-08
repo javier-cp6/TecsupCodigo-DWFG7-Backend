@@ -1,0 +1,108 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+  color: #00345C;
+}
+.section-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.section-container img {
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.form-container {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  /* flex-wrap: wrap; */
+  flex-direction: column;
+  height: 100%;
+  padding-left: 50px;
+  background: #00B7A3;
+  padding-right: 40px;
+}
+
+.form-container h2 {
+  font-size: 48px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  position: relative;
+}
+.form-container h2:after {
+  content: '';
+  position: absolute;
+  width: 120px;
+  height: 10px;
+  bottom: -15px;
+  left: 0;
+  background: #00345C;
+}
+.form-container h3 {
+  font-size: 32px;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+.form-container input {
+  border: none;
+  background: white;
+  color: #00345C;
+  padding-left: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.form-container input::placeholder{
+  text-align: left;
+  margin-right: 30px;
+  font-size: 22px;
+  text-align: right;
+}
+.form-container input:focus {
+  outline: none;
+}
+
+.form-container input[type="text"] {
+  font-size: 24px;
+  margin: 5px 0;
+}
+
+.form-container p {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+.form-container input[type="radio"] {
+  margin-right: 10px;
+}
+.form-container input[type="checkbox"] {
+  margin-right: 10px;
+}
+.form-container label {
+  font-size: 18px;
+  margin: 2px 0;
+}
+.form-container textarea {
+  font-size: 28px;
+  margin-top: 20px;
+  height: 100px;
+  padding-left: 20px;
+
+}
+.form-container input[type="submit"] {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 20px auto;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  background: #00345C;
+}
+.form-container input[type="submit"]:hover{
+  cursor: pointer;
+}

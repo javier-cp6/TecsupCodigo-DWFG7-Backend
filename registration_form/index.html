@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Registration</title>
+
+  <link rel="stylesheet" href="./styles.css">
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  
+</head>
+<body>
+  <main>
+    <section class="section-container">
+      <img class="img-home" src="./event_img.png">
+      <form class="form-container">
+        <h2>Registro</h2>
+        <input type="text" placeholder="Nombre*" value="" required/>
+        <input type="text" placeholder="Apellido*" value="" required/>
+        <input type="text" placeholder="Correo*" value="" required/>
+        <input type="text" placeholder="Teléfono*" value="" required/>
+        <input type="text" placeholder="Contraseña*" value="" required/>
+        
+        <h3>Zonas</h3>
+        <p>Selecciona la zona de tu preferencia</p>
+        <label><input type="radio" id="radio1" name="zone" value="1" checked>Super VIP</label>
+        <label><input type="radio" id="radio2" name="zone" value="2">VIP</label>
+        <label><input type="radio" id="radio3" name="zone" value="3">General</label>
+        <textarea></textarea>
+        <label><input type="checkbox" id="cbox-tc" value="#">Acepto los términos y condiciones</label>
+        <input type="submit" value="Registrarme"/>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

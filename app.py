@@ -1,11 +1,14 @@
 from flask import Flask
 from config import conexion
 from models.participante import Participante
-
 from dotenv import load_dotenv
+from controllers.participante import ParticipanteController
+from flask_restful import Api
+
 # environ devuelve las variables de entorno como un diccionario
 from os import environ
 app = Flask(__name__)
+api = Api(app)
 
 # cargar las variables de .env como si fuesen variables de entorno  para que puedan ser accedidas por environ
 load_dotenv()
@@ -24,5 +27,17 @@ conexion.init_app(app)
 # se ejecuta la conexión y se crean las tablas.
 # Si no hay ninguna tabla a crear, no lanzará error de credenciales inválidas
 conexion.create_all(app=app)
+
+
+@app.route('/', methods=['GET'])
+def inicio():
+    return {
+        'message': 'Bienvenido a mi API de conciertos'
+    }
+
+
+# definiicón de rutas usando Flask RestFul
+api.add_resource(ParticipanteController, '/participantes')
+
 if __name__ == '__main__':
     app.run(debug=True)

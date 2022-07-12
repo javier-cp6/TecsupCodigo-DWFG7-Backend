@@ -22,16 +22,17 @@
         <input type="text" placeholder="Nombre*" value="" required/>
         <input type="text" placeholder="Apellido*" value="" required/>
         <input type="text" placeholder="Correo*" value="" required/>
-        <input type="text" placeholder="Teléfono*" value="" required/>
+        <input type="text" placeholder="Teléfono" value=""/>
         <input type="text" placeholder="Contraseña*" value="" required/>
         
         <h3>Zonas</h3>
-        <p>Selecciona la zona de tu preferencia</p>
-        <label><input type="radio" id="radio1" name="zone" value="1" checked>Super VIP</label>
-        <label><input type="radio" id="radio2" name="zone" value="2">VIP</label>
-        <label><input type="radio" id="radio3" name="zone" value="3">General</label>
-        <label><textarea placeholder="Comentarios*"></textarea></label>
-        <label><input type="checkbox" id="cbox-tc" value="#">Acepto los términos y condiciones</label>
+        <p>Selecciona la zona de tu preferencia:</p>
+        <label><input type="radio" id="radio1" name="zone" value="1" checked required/>Super VIP</label>
+        <label><input type="radio" id="radio2" name="zone" value="2"/>VIP</label>
+        <label><input type="radio" id="radio3" name="zone" value="3"/>General</label>
+        <label><textarea placeholder="Comentarios"></textarea></label>
+        <label>
+          <input type="checkbox" id="cbox-tc" value="#" required/>Acepto los <a href="#">términos y condiciones.</a>*</label>
         <input type="submit" value="Registrarme"/>
       </form>
     </section>

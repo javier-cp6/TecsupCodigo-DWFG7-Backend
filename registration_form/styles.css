@@ -4,35 +4,42 @@
   box-sizing: border-box;
   font-family: 'Lato', sans-serif;
   color: #00345C;
+  background: #00B7A3;
+
 }
 .section-container {
-  height: 100vh;
+  width: 1200px;
+  max-width: 100%;
+  margin: 0 auto;
+  height: 680px;
+  /* max-height: 100vh; */
+  padding: 10px 30px;
   display: flex;
   justify-content: center;
 }
 
 .section-container img {
   width: 50%;
-  height: 100%;
+  /* max-height: 100%; */
   object-fit: cover;
 }
 
 .form-container {
   width: 50%;
-  height: 100%;
+  /* max-height: 100%; */
   display: flex;
-  /* flex-wrap: wrap; */
+  flex-wrap: nowrap;
   flex-direction: column;
-  height: 100%;
-  padding-left: 50px;
   background: #00B7A3;
-  padding-right: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 50px;
+  padding-right: 0px;
 }
 
 .form-container h2 {
   font-size: 48px;
-  margin-top: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   position: relative;
 }
 .form-container h2:after {
@@ -55,56 +62,56 @@
   background: white;
   color: #00345C;
   padding-left: 20px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 .form-container input::placeholder{
-  margin-right: 30px;
+  padding-right: 30px;
   font-size: 22px;
   text-align: right;
 }
 .form-container input:focus {
   outline: none;
 }
-
 .form-container input[type="text"] {
-  font-size: 24px;
+  font-size: 20px;
   margin: 5px 0;
 }
-
 .form-container p {
-  font-size: 22px;
+  font-size: 20px;
   margin-bottom: 10px;
-}
-.form-container input[type="radio"] {
-  margin-right: 10px;
-}
-.form-container input[type="checkbox"] {
-  margin-right: 10px;
 }
 .form-container label {
   font-size: 18px;
-  /* margin: 2px 0; */
+}
+.form-container input[type="radio"] {
+  margin-right: 12px;
 }
 .form-container textarea {
   font-size: 20px;
   margin-top: 10px;
   width: 100%;
-  border: none;
   background: white;
   color: #00345C;
   padding-left: 20px;
+  padding-right: 20px;
   padding-top: 5px;
   padding-bottom: 5px;
   resize: none;
+  border: none;
 }
 .form-container textarea::placeholder{
   text-align: right;
-  margin-right: 30px;
-  font-size: 22px;
+  font-size: 18px;
 }
 .form-container textarea:focus {
   outline: none;
+}
+.form-container input[type="checkbox"] {
+  margin-right: 12px;
+}
+.form-container a{
+  font-weight: bold;
 }
 .form-container input[type="submit"] {
   font-size: 18px;
@@ -118,3 +125,129 @@
 .form-container input[type="submit"]:hover{
   cursor: pointer;
 }
+
+@media only screen and (max-width: 992px) {
+  .section-container {
+    width: 100%;
+    padding: 10px 20px;
+
+  }
+  .form-container {
+    width: 50%;
+    padding-left: 20px;
+    padding-right: 0px;
+  }
+  .form-container h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .form-container h2:after {
+    width: 90px;
+  }
+  .form-container h3 {
+    font-size: 28px;
+  }
+  .form-container input::placeholder{
+    padding-right: 16px;
+    font-size: 18px;
+  }
+  .form-container input[type="text"] {
+    font-size: 16px;
+    margin: 3px 0;
+  }
+  .form-container p {
+    font-size: 15px;
+  }
+  .form-container label {
+    font-size: 14px;
+  }
+  .form-container input[type="radio"] {
+    margin-right: 10px;
+  }
+  .form-container textarea {
+    font-size: 18px;
+  }
+  .form-container textarea::placeholder{
+    font-size: 18px;
+  }
+  .form-container input[type="submit"] {
+    font-size: 14px;
+    margin: 20px auto;
+  }
+}
+
+  
+@media only screen and (max-width: 600px) {
+  .section-container {
+    /* width: 600px; */
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .section-container img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: 0% 80%
+  }
+  .form-container {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .form-container h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .form-container h2:after {
+    content: '';
+    position: absolute;
+    width: 70px;
+    height: 8px;
+    bottom: -15px;
+    left: 0;
+    background: #00345C;
+  }
+  .form-container h3 {
+    font-size: 24px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+  .form-container input {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  .form-container input::placeholder{
+    padding-right: 20px;
+    font-size: 14px;
+  }
+  .form-container input[type="text"] {
+    font-size: 14px;
+    margin: 3px 0;
+  }
+  .form-container p {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  .form-container label {
+    font-size: 14px;
+  }
+  .form-container input[type="radio"] {
+    margin-right: 12px;
+  }
+  .form-container textarea {
+    font-size: 14px;
+  }
+  .form-container textarea::placeholder{
+    font-size: 14px;
+  }
+  .form-container input[type="submit"] {
+    font-size: 14px;
+    margin: 10px auto;
+  }
+  }
+  

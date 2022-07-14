@@ -28,7 +28,9 @@ conexion.init_app(app)
 
 # se ejecuta la conexión y se crean las tablas.
 # Si no hay ninguna tabla a crear, no lanzará error de credenciales inválidas
-conexion.create_all(app=app)
+
+# 13.08 comentar
+# conexion.create_all(app=app)
 
 
 @app.route('/', methods=['GET'])

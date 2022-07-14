@@ -6,7 +6,7 @@ class ParticipanteResponseDTO(SQLAlchemyAutoSchema):
     # la clase meta sirve como el super()
     #  para heredar los atributos de la clase padre
     class Meta:
-        # sirve para indicar el modelo a utilizar para hacer todo lo relacionado con la serialización y deserialización del modelo
+        # el atributo model sirve para indicar el modelo a utilizar para hacer todo lo relacionado con la serialización y deserialización
         model = Participante
 
 

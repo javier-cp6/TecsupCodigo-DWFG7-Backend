@@ -8,6 +8,8 @@ from flask_restful import Api
 # environ devuelve las variables de entorno como un diccionario
 from os import environ
 app = Flask(__name__)
+
+# iniciar instancia Api()
 api = Api(app)
 
 # cargar las variables de .env como si fuesen variables de entorno  para que puedan ser accedidas por environ
@@ -36,7 +38,8 @@ def inicio():
     }
 
 
-# definiicón de rutas usando Flask RestFul
+# definición de rutas usando Flask RestFul
+# api.add_resource(recurso, url)
 api.add_resource(ParticipanteController, '/participantes')
 
 if __name__ == '__main__':

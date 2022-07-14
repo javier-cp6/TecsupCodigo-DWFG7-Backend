@@ -4,25 +4,26 @@ from config import conexion
 from models.participante import Participante
 from dtos.participante_dto import ParticipanteRequestDTO, ParticipanteResponseDTO
 
-# los tipos de datos que se pueden retornar son String, Int, Boolean, Arreglos y Listas, Diccionarios
+# los tipos de datos que se pueden retornar son String, Int, Boolean, Arreglos, Listas, y Diccionarios. Usualmente, listas y diccionarios
 
 
 class ParticipanteController(Resource):
     # esta clase se comportará como un controlador, es decir, que si definimos un método llamado get
     def get(self):
         # resultado = conexion.session.query(Participante)
+        # print(resultado) # devuelve la consulta SELECT ... FROM
 
         # con .all() se convierte en SELECT * FROM participantes
         # https://docs.sqlalchemy.org/en/14/orm/query.html
         resultado = conexion.session.query(Participante).all()
+        # resultado retornará una lista [] de instancias de la clase del modelo.
+        print(resultado)  # devuelve la lista con el resultado de la consulta
+        # se pude acceder a cada una de ellas a través de sus atributos y modelos (si hubiesen)
+        print(resultado[0].zona)
 
         # many = True indica que se está pasando una lista de instancias por lo que el DRO va a tener que iterar la lista y transformarlas en un diccionario.
         # es muy importante declarar el many = True. Si no se indica many = True asume que es una instancias en vez de una lista, y no va a iterar
-
         participantesSerializados = ParticipanteResponseDTO().dump(resultado, many=True)
-
-        # retornará una lista de instancias de la clase del modelo. se pude accer a cada una de ellas a través de sus atributos y modelos (si hubiesen)
-        print(resultado[0].zona)
 
         participantes = []
 
@@ -33,8 +34,6 @@ class ParticipanteController(Resource):
                 # ...
             })
 
-        # retorna una lista de instancias de la clase del modelo
-        # print(resultado)
         return {
             'message': 'Ingreso al get',
             'content': 'participantes',

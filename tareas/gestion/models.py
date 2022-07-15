@@ -18,8 +18,7 @@ class Tarea(models.Model):
     estado = models.CharField(choices=estadoOpciones,
                               max_length=10, default='POR_HACER')
 
-
-class Meta:
-    db_table = 'tareas'
-    # ordenamiento descendente por la fecha de vencimiento
-    ordering = ['-fechaVencimiento']
+    class Meta:
+        db_table = 'tareas'
+        # ordenamiento descendente por la fecha de vencimiento
+        ordering = ['-fechaVencimiento']

@@ -1,4 +1,5 @@
 from django.db import models
+from autorizacion.models import Usuario
 
 # Create your models here.
 
@@ -17,6 +18,10 @@ class Tarea(models.Model):
         db_column='fecha_vencimiento')
     estado = models.CharField(choices=estadoOpciones,
                               max_length=10, default='POR_HACER')
+
+
+    #
+    usuarioId = models.ForeignKey(to = Usuario, related_name='tareas', db_column='usuario_id', on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'tareas'

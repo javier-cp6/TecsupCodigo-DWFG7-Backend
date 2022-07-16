@@ -1,9 +1,10 @@
 from django.urls import path
-from .views import inicio, PruebaView
+from .views import inicio, PruebaView, TareasView
 
 # serán todas las rutas que pueden ser accedidas a esta aplicación
 # debe llamarse 'urlpatterns'
 urlpatterns = [
     path('inicio', inicio),
-    path('prueba', PruebaView.as_view())
+    path('prueba', PruebaView.as_view()),
+    path('tareas', TareasView.as_view())
 ]

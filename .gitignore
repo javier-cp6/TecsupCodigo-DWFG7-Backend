@@ -1,0 +1,4 @@
+entorno_flask/
+entorno_django/
+__pycache__/
+.env

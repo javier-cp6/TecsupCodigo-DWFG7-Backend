@@ -11,7 +11,7 @@ class Task(models.Model):
   id = models.AutoField(primary_key=True, unique=True)
   name = models.CharField(db_column='task_name', max_length=100)
   description = models.TextField(db_column='task_desc', null=True)
-  deadline = models.DateField(db_column='task_deadline')
+  deadline = models.DateTimeField(db_column='task_deadline')
   status = models.CharField(db_column='task_status', choices = statusOptions, max_length=2, default=PENDING)
 
   class Meta:

@@ -2,8 +2,9 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.request import Request
 
-from rest_framework.generics import ListAPIView
-from .serializers import TestSerializer
+from rest_framework.generics import ListAPIView, ListCreateAPIView
+from .serializers import TestSerializer, TaskSerializer
+from .models import Task
 
 @api_view(http_method_names=['GET', 'POST'])
 def start(request: Request):
@@ -22,3 +23,7 @@ class TestView(ListAPIView):
     'lastname': 'eich'
   }]
   serializer_class = TestSerializer
+
+class TaskView(ListCreateAPIView):
+  queryset = Task.objects.all()
+  serializer_class = TaskSerializer

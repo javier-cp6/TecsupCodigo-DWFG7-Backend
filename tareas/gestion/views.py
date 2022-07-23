@@ -7,6 +7,8 @@ from .serializers import PruebaSerializer, TareaSerializer
 from .models import Tarea
 from rest_framework import status
 
+from rest_framework.permissions import IsAuthenticated
+
 
 @api_view(http_method_names=['GET', 'POST'])
 def inicio(request: Request):
@@ -34,6 +36,8 @@ class TareasView(ListCreateAPIView):
     queryset = Tarea.objects.all() # SELECT * FROM tareas
     serializer_class = TareaSerializer
 
+    permission_classes = [IsAuthenticated]
+
     # def get(self, request):
     #     return Response(data = {
     #         'message': "Aún no hay tareas"
@@ -42,7 +46,10 @@ class TareasView(ListCreateAPIView):
         # cuando se modifica el méteodo por algún comportamiento distinto, entonces DRF (django restful framework) obedecerá a este nuevo comportamiento. Por lo tanto, se puede dejar de utilizar queryset y serializer_class
         # primero traer las tareas
         #  
-        tareas = self.get_queryset()
+
+        usuarioId = request.user.id
+        # tareas = self.get_queryset()
+        tareas = Tarea.objects.filter(usuarioId = usuarioId).all()
 
         tareasSerializada = self.serializer_class(tareas, many = True)
 
@@ -53,6 +60,11 @@ class TareasView(ListCreateAPIView):
 
     def post(self, request: Request):
         body = request.data # body
+        
+        print(request.user.nombre)
+        body['usuarioId'] = request.user.id
+
+        
         instanciaSerializador = self.serializer_class(data = body)
         validacion = instanciaSerializador.is_valid(raise_exception=True) # retorna true si es válida, sino emite error 
         if validacion == True:

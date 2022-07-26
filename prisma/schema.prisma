@@ -19,7 +19,7 @@ model Departamento {
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_At")
 
-  // un departamento tiene varios trabajadores
+  // relación: un departamento tiene varios trabajadores
   trabajadores Trabajador[]
 
   @@map("departamentos")
@@ -28,19 +28,29 @@ model Departamento {
 model Trabajador {
   id       Int            @id @unique @default(autoincrement())
   nombre   String         @db.VarChar(45)
-  // con ? puede admitir valores nulos
+  // con ? se admite valores nulos
   apellido String?        @db.VarChar(45)
   email    String         @db.VarChar(45)
   password String         @db.Text
   // tipo de dato ENUM
   rol      ROL_TRABAJADOR @default(OBRERO)
 
+  // relacion (one to many): Departamento Trabajador
+
+  // https://www.prisma.io/docs/concepts/components/prisma-schema/relations/one-to-many-relations
   // crear columna
   departamentoId Int          @map("departamento_id")
   // crear relación
   departamento   Departamento @relation(fields: [departamentoId], references: [id])
   // agregar relación en Departamento (trabajadores Trabajador[])
-  asistencias    Asistencia[]
+
+  // relación: un trabajador tiene múltiples asistencias
+  asistencias Asistencia[]
+
+  // relación de tabla consigo misma
+  supervisorId Int          @map("supervisor_id")
+  trabajadores Trabajador[] @relation("trabajadores")
+  supervisor   Trabajador   @relation("trabajadores", fields: [supervisorId], references: [id])
 
   @@map("trabajadores")
 }
@@ -51,7 +61,7 @@ model Asistencia {
   ingreso DateTime @db.Time()
   salida  DateTime @db.Time()
 
-  // relaciones
+  // relación (one to many): Trabajador Asistencia
   trabajadorId Int        @map("trabajador_id")
   trabajador   Trabajador @relation(fields: [trabajadorId], references: [id])
 

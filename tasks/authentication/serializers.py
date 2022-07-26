@@ -7,6 +7,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 
   # optional
   # email = serializers.EmailField(required=True, validators=[UniqueValidator(queryset=User.objects.all())])
+  password = serializers.CharField(write_only=True, required=True)
   passwordchecker = serializers.CharField(write_only=True, required=True)
 
   class Meta:

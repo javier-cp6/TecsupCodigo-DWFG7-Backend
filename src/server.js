@@ -1,9 +1,10 @@
 import express from 'express'
-import { PrismaConnector } from './prisma.js';
+// import { PrismaConnector } from './prisma.js';
+import { departamentosRouter } from './routes/departamentos.routes.js'
 
 const app = express()
 const PORT = process.env.PORT
-
+/*
 app.get('/departamentos', async (req, res) => {
   try {
     // SELECT * FROM departamentos
@@ -20,6 +21,10 @@ app.get('/departamentos', async (req, res) => {
     })
   }
 })
+*/
+app.use(express.json())
+
+app.use(departamentosRouter)
 
 app.listen(PORT, ()=> {
   console.log(`Servidor corriendo exitosamente en puerto ${PORT}`)

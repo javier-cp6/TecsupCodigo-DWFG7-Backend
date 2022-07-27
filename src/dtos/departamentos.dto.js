@@ -3,7 +3,7 @@ import _ from 'lodash'
 export const departamentoRequestDTO = (body) => {
   const errores = []
   
-  if( _ .isNil(body.nombre)){
+  if( _.isNil(body.nombre)){
     errores.push("Falta el nombre");
   }
   if(errores.length !== 0) {

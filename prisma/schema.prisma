@@ -34,6 +34,7 @@ model Trabajador {
   password String         @db.Text
   // tipo de dato ENUM
   rol      ROL_TRABAJADOR @default(OBRERO)
+  validado Boolean        @default(false)
 
   // relacion (one to many): Departamento Trabajador
 
@@ -48,9 +49,9 @@ model Trabajador {
   asistencias Asistencia[]
 
   // relación de tabla consigo misma
-  supervisorId Int          @map("supervisor_id")
+  supervisorId Int?         @map("supervisor_id")
   trabajadores Trabajador[] @relation("trabajadores")
-  supervisor   Trabajador   @relation("trabajadores", fields: [supervisorId], references: [id])
+  supervisor   Trabajador?  @relation("trabajadores", fields: [supervisorId], references: [id])
 
   @@map("trabajadores")
 }

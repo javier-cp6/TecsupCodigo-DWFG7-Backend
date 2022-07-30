@@ -21,8 +21,8 @@ export const validarCorreo = async ({ destinatario, nombre, token}) => {
     const resultado = await cliente.sendMail({
       from: process.env.EMAIL,
       to: destinatario,
-      subject: "Valide su correo para la APP de backend",
-      text: `Hola ${nombre} por favor valida tu correo haciendo click en el siguiente enlace: http://mifront.com?token=${token}`,
+      subject: "¡Bienvenido! Valide su correo para la APP de backend",
+      text: `Hola ${nombre}, por favor valide su correo haciendo click en el siguiente enlace: http://mifront.com?token=${token}`,
     })
     console.log(resultado)
   } catch (error) {
@@ -30,3 +30,22 @@ export const validarCorreo = async ({ destinatario, nombre, token}) => {
   }
 }
 
+export const notificarNuevoPassword = async ({destinatario, nombre}) => {
+  try {
+    await cliente.sendMail({
+      from: process.env.EMAIL,
+      to: destinatario,
+      subject: "Solicitud de cambio de contraseña",
+      html: `
+        <h1>Cambio de Contraseña</h1>
+        <p>Hola ${nombre}, te notificamos que tu password ha sido actualizado. Si no fuiste tú, reinicia tu contraseña! Gracias! 😀</p>
+        </br>
+        <h3>Atentamente,</h3>
+        </br>
+        <h3>El equipo de backend</h3>
+        `,
+    })
+  } catch (error) {
+    console.log(error.message)
+  }
+}

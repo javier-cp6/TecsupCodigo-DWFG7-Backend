@@ -51,9 +51,31 @@ export const trabajadoresRequestDTO = (data) => {
       errores.push(mensaje)
     } 
   }
-
   if (errores.length !== 0) {
     throw new Error(errores);
+  } else {
+    return data
+  }
+}
+
+export const cambiarPasswordRequestDTO = (data) => {
+  // validar que se reciba {email: "...", oldPassword: "...", newPassword: "..."}
+  // validar correo
+  const errores = []
+  if (_.isNil(data.email)) {
+    errores.push("Falta el email")
+  } 
+  if (_.isNil(data.oldPassword)) {
+    errores.push("Falta el oldPassword")
+  } 
+  if (_.isNil(data.newPassword)) {
+    errores.push("Falta el newPassword")
+  } 
+  if (_.isNil(data.email) && !validator.isEmail(data.email)) {
+    errores.push("Email inválido")
+  } 
+  if (errores.length !== 0) {
+    throw new Error(errores)
   } else {
     return data
   }

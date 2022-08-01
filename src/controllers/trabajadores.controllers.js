@@ -101,6 +101,10 @@ export const cambiarPassword = async (req, res) => {
       where: {email: data.email}
     })
     // TODO: la nueva contraseña no puede ser igual a la anterior
+    if (bcryptjs.compareSync(data.oldPassword, trabajador.password) && bcryptjs.compareSync(data.newPassword, trabajador.password)) {
+      throw new Error("Nueva contraseña debe ser distinta a la anterior")
+    }
+
     if (bcryptjs.compareSync(data.oldPassword, trabajador.password)) {
       const newPassword = bcryptjs.hashSync(data.newPassword)
 

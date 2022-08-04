@@ -1,8 +1,16 @@
 import cryptoJs from "crypto-js"
 import bcryptjs from "bcryptjs"
 import { PrismaConnector} from "../prisma.js"
-import { cambiarPasswordRequestDTO, trabajadoresRequestDTO } from "../dtos/trabajadores.dto.js";
+import jwt from "jsonwebtoken";
+import { 
+  cambiarPasswordRequestDTO, 
+  trabajadoresRequestDTO,
+  loginRequestDTO
+ } from "../dtos/trabajadores.dto.js";
 import { validarCorreo, notificarNuevoPassword } from "../utils/correos.js";
+
+// la librería "bcryptjs" ha sido desarrolada en CommonJS, mientras que el proyecto en EsModule (ECMAScript), por lo cual, para que se entiendan debe importarse la librería en su totalidad y luego recién hacer la desestructuración
+const { compareSync } = bcryptjs
 
 export const postTrabajador = async (req, res) => {
  try {
@@ -134,4 +142,47 @@ export const cambiarPassword = async (req, res) => {
       result: error.message
     })
   }
+}
+
+export const login = async (req, res) => {
+  const { body } = req
+  try {
+    const data = loginRequestDTO(body)
+    const trabajador = await PrismaConnector.trabajador.findFirstOrThrow({
+      where: {email: data.email},
+    })
+    if(compareSync(data.password, trabajador.password)){
+      console.log("Password correcto")
+
+      const token = jwt.sign({
+        id: trabajador.id,
+        message: 'Mensaje oculto',
+      },
+      process.env.JWT_SECRET,
+      {expiresIn: "2h"}
+      // expiresIn: se declara con un número en segundos, o entre comillas en ms. Otras opciones son: '1 day', '10h', '50d', '1y'
+      )
+      
+      return res.json({
+        message: "Bienvenido",
+        result: token
+      })
+    } else {
+      console.log("Constraseña incorrecta")
+      throw new Error("Password inválida")
+    }
+
+  } catch (error) {
+    return res.status(400).json({
+      message: "Error al hacer el login",
+      result: error.message,
+    })
+  }
+ }
+
+export const perfil = async (req, res) => {
+return res.json({
+  message: null,
+  result: "",
+})
 }

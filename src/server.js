@@ -14,7 +14,7 @@ const PORT = process.env.PORT
 // cors() puede recibir un json de opciones (método 1) o una función (método 2)
 app.use(
   cors({
-    origin: ["https://www.tecsup.edu.pe"],
+    origin: ["https://myappdotcom"],
     methods: ["GET", "POST"],
     allowedHeaders: ["accept", "authorization", "content-type"]
   })
@@ -25,7 +25,7 @@ app.use(
 
 // lista de orígnes permitidos, es decir dominios que  pueden consultar API
 /*
-const origenesPermitidos = ["http://miaplicacion.com"]; // lista blanca
+const origenesPermitidos = ["http://myappdotcom"]; // lista blanca
 
 app.use(
   cors((req, cb) => {

@@ -7,11 +7,14 @@ import {
   perfil
  } from "../controllers/trabajadores.controllers.js";
 
-import { verificarToken } from "../validador.js";
+import { 
+  verificarToken,
+  isGerente,
+ } from "../validador.js";
 
 export const trabajadoresRouter = Router ()
 
-trabajadoresRouter.post("/registro", postTrabajador)
+trabajadoresRouter.post("/registro", verificarToken, isGerente, postTrabajador)
 trabajadoresRouter.post("/validar-trabajador", validarTrabajador)
 trabajadoresRouter.post("/cambiar-password", cambiarPassword)
 trabajadoresRouter.post("/login", login)

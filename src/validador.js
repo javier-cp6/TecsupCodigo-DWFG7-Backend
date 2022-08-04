@@ -1,8 +1,10 @@
+import prisma  from "@prisma/client";
 import _ from "lodash";
 import jwt from "jsonwebtoken";
+import { PrismaConnector } from "./prisma.js";
 
 // middleware: ejecuta operaciones previas al controlador final
-export const verificarToken = (req, res, next) => {
+export const verificarToken = async (req, res, next) => {
   if(_.isNil(req.headers.authorization)){
     // validar que se envíen los headers de authorization
     return res.status(401).json({
@@ -17,6 +19,14 @@ export const verificarToken = (req, res, next) => {
     }
     const payload = jwt.verify(token, process.env.JWT_SECRET);
     console.log(payload)
+    const trabajador = await PrismaConnector.trabajador.findFirstOrThrow({
+      where: {
+        id: payload.id
+      }
+    })
+
+    // crear nueva llave user
+    req.user = trabajador
 
     next()
   } catch (error) {
@@ -24,5 +34,16 @@ export const verificarToken = (req, res, next) => {
       message: "Token inválida",
       content: error.message,
     })
+  }
+}
+
+export const isGerente = async (req, res, next) => {
+  if(req.user.rol !== prisma.ROL_TRABAJADOR.GERENTE) {
+    return res.status(403).json({
+      message: "Usuario no cuenta con los permisos requeridos",
+      result: null,
+    })
+  } else {
+    next()
   }
 }

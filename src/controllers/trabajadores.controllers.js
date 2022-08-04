@@ -181,8 +181,10 @@ export const login = async (req, res) => {
  }
 
 export const perfil = async (req, res) => {
-return res.json({
-  message: null,
-  result: "",
+  console.log(req.user)
+  const {password, ...result } = req.user
+  return res.json({
+    message: null,
+    result,
 })
 }

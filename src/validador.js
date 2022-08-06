@@ -47,3 +47,14 @@ export const isGerente = async (req, res, next) => {
     next()
   }
 }
+
+export const isAdmin = async (req, res, next) => {
+  if(req.body.email === process.env.ADMIN_EMAIL && req.body.password === process.env.ADMIN_PASSWORD ) {
+    next()
+  } else {
+    return res.status(400).json({
+      message: "Usuario o contraseña incorrecta",
+      result: null,
+    })
+  }
+}

@@ -3,6 +3,9 @@ import express from 'express'
 import cors from "cors";
 import { departamentosRouter } from './routes/departamentos.routes.js'
 import { trabajadoresRouter } from './routes/trabajadores.routes.js'
+import { swaggerRouter } from './routes/swagger.routes.js';
+// import swaggerUi from 'swagger-ui-express';
+// import swaggerDocument from './swagger.json' assert {type: 'json'}
 
 const app = express()
 const PORT = process.env.PORT
@@ -15,7 +18,7 @@ const PORT = process.env.PORT
 app.use(
   cors({
     origin: ["https://myappdotcom"],
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["accept", "authorization", "content-type"]
   })
 )
@@ -63,6 +66,9 @@ app.use(express.json())
 
 app.use(departamentosRouter)
 app.use(trabajadoresRouter)
+app.use(swaggerRouter)
+// app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 
 app.listen(PORT, ()=> {
   console.log(`Servidor corriendo exitosamente en puerto ${PORT}`)

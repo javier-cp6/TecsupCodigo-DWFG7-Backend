@@ -1,0 +1,11 @@
+db > muestra la db en la que se está trabajando
+us <DB_NAME> > usa DB o la crea en caso no exista. La DB No se guardará de forma permanente hasta que contenga una colección.
+db.dropDatabase() > elimina DB. Es necesario moverse manualmente a otra DB.
+show dbs > muestra una lista de las DB y sus tamaños respectivos.
+
+db.COLECCION.insertOne({...}) > inserta un registro en la coleccion indicada
+db.COLECCION.insertMany()
+db.COLECCION.insert() *This method is deprecated in mongosh
+
+db.COLECCION.f<TAB><TAB> > muestra menú con las opciones que inicien con la letra f
+

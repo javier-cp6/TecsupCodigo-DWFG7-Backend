@@ -3,6 +3,8 @@ import { productoModel } from "../models/productos.js"
 export const crearProducto = async (req, res) => {
   try {
     const data = req.body;
+
+    // método 1 para guardar registro: usando método .create. NO permite realizar modificaciones antes de guardar
     const nuevoProducto = await productoModel.create(data); 
     nuevoProducto.toJSON();// extrae la información de la nueva instancia creada y la convierte a un JSON para que pueda ser legile en el frontend
 

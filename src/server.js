@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 // import { productoModel } from "./models/productos.js"
 import { productoRouter } from "./routes/productos.js";
 import { usuarioRouter } from "./routes/usuarios.js";
+import { direccionRouter } from "./routes/direcciones.js"; 
 
 const app = express();
 
@@ -15,6 +16,7 @@ const port = process.env.PORT ?? 3000;
 // middleware que agrega ruta a la app
 app.use(productoRouter)
 app.use(usuarioRouter)
+app.use(direccionRouter)
 
 mongoose
   .connect(process.env.MONGO_URL, { 

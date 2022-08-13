@@ -1,4 +1,5 @@
 import bcryptjs from "bcryptjs"
+import jwt from "jsonwebtoken";
 import { usuarioModel } from "../models/usuarios.js";
 import { usuarioRequestDTO, loginRequestDTO } from "../dtos/usuarios.js";
 
@@ -43,12 +44,28 @@ export const login = async (req, res) => {
         result: null,
       });
     } else {
-      if (bcryptjs.compareSync(data.password, usuarioEncontrado.password))
+      if (bcryptjs.compareSync(data.password, usuarioEncontrado.password)) {
 
-      return res.status(200).json({
-        message: "Usuario existe",
-        result: null,
-      });    }
+        // crear token
+        const token = jwt.sign(
+          {
+            id: usuarioEncontrado._id,
+          },
+          process.env.JWT_SECRET,
+          { expiresIn: "1h"}
+        )
+
+        return res.status(200).json({
+          message: "Usuario existe",
+          result: token,
+        });
+      } else {
+        return res.status(200).json({
+          message: "Usuario o contraseña inválidos",
+          result: null,
+        });
+      }
+    }
   } catch (error) {
     return res.status(400).json({
       message: error.message,

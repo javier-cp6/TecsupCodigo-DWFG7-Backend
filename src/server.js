@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import { productoRouter } from "./routes/productos.js";
 import { usuarioRouter } from "./routes/usuarios.js";
 import { direccionRouter } from "./routes/direcciones.js"; 
+import { carritoRouter } from "./routes/carritos.js";
 
 const app = express();
 
@@ -17,6 +18,7 @@ const port = process.env.PORT ?? 3000;
 app.use(productoRouter)
 app.use(usuarioRouter)
 app.use(direccionRouter)
+app.use(carritoRouter)
 
 mongoose
   .connect(process.env.MONGO_URL, { 
